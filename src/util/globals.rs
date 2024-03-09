@@ -9,8 +9,9 @@ pub enum Mood {
     Neutral,
     Negative
 }
-static PRIVILEGED_USERS: [u64; 1] = [309307881205923840];
 
+static PRIVILEGED_USERS: [u64; 2] = [309307881205923840, 197424794063470592];
+//                                   ^Annika             ^Kumo
 pub fn is_privileged_user(user_id: UserId) -> bool {
     PRIVILEGED_USERS.contains(&u64::from(user_id))
 }
