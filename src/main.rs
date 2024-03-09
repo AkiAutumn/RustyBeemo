@@ -9,6 +9,7 @@ mod commands {
     pub mod register;
     pub mod steal_profile_pic;
     pub mod ping;
+    pub mod warn;
 }
 
 use poise::{serenity_prelude as serenity};
@@ -33,7 +34,8 @@ async fn main() {
                 commands::say::say(),
                 commands::move_here::move_here(),
                 commands::steal_profile_pic::steal_profile_pic(),
-                commands::ping::ping()
+                commands::ping::ping(),
+                commands::warn::warn()
             ],
             ..Default::default()
         })
