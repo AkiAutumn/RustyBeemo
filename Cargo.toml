@@ -1,0 +1,42 @@
+[package]
+authors = ["Annika"]
+name = "beemo"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = { version = "1.36.0", features = ["rt-multi-thread"]} # for async in general
+futures-util = { version = "0.3.30", default-features = false } # for async in general
+poise = "0.6.1"
+poise_macros = { path = "macros", version = "0.6.1" } # remember to update the version on changes!
+async-trait = { version = "0.1.77", default-features = false } # various traits
+regex = { version = "1.6.0", default-features = false, features = ["std"] } # prefix
+tracing = { version = "0.1.40", features = ["log"] } # warning about weird state
+derivative = "2.2.0"
+parking_lot = "0.12.1"
+dotenv = "0.15.0"
+rand = "0.8.5"
+
+[dependencies.serenity]
+default-features = false
+features = ["builder", "client", "gateway", "model", "utils", "collector", "framework"]
+version = "0.12.1"
+
+[features]
+default = ["serenity/rustls_backend", "cache", "chrono", "handle_panics"]
+chrono = ["serenity/chrono"]
+cache = ["serenity/cache"]
+# No-op feature because serenity/collector is now enabled by default
+collector = []
+# Enables support for handling panics inside commands via FrameworkError::CommandPanic.
+# This feature has no overhead and can always be enabled.
+# This feature exists because some users want to disable the mere possibility of catching panics at
+# build time for peace of mind.
+handle_panics = []
+
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "doc_nightly"]
