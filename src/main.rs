@@ -3,13 +3,7 @@ mod util {
 }
 
 mod commands {
-    pub mod say;
-    pub mod age;
-    pub mod move_here;
-    pub mod register;
-    pub mod steal_profile_pic;
-    pub mod ping;
-    pub mod warn;
+    pub mod say; pub mod age; pub mod move_here; pub mod register; pub mod steal_profile_pic; pub mod ping; pub mod warn; pub mod self_update;
 }
 
 use poise::{serenity_prelude as serenity};
@@ -35,7 +29,8 @@ async fn main() {
                 commands::move_here::move_here(),
                 commands::steal_profile_pic::steal_profile_pic(),
                 commands::ping::ping(),
-                commands::warn::warn()
+                commands::warn::warn(),
+                commands::self_update::self_update()
             ],
             ..Default::default()
         })
