@@ -3,7 +3,14 @@ mod util {
 }
 
 mod commands {
-    pub mod say; pub mod age; pub mod move_here; pub mod register; pub mod steal_profile_pic; pub mod ping; pub mod warn; pub mod self_update;
+    pub mod say;
+    pub mod age;
+    pub mod move_here;
+    pub mod register;
+    pub mod steal_profile_pic;
+    pub mod ping;
+    pub mod warn;
+    pub mod self_update;
 }
 
 use poise::{serenity_prelude as serenity};

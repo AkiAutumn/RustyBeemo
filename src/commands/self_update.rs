@@ -13,19 +13,20 @@ pub async fn self_update(
 ) -> Result<(), Error> {
 
     if !is_privileged_user(ctx.author().id) {
-        
-        let response = format!("You're not allowed to do that! {}", random_emote(Mood::Negative));
-        ctx.reply(response).await?;
+
+        let reply = CreateReply::default()
+            .content(format!("You're not allowed to do that! {}", random_emote(Mood::Negative)))
+            .ephemeral(true);
+        ctx.send(reply).await?;
         
     } else {
+
+        println!("Self-update requested by {}", ctx.author().name);
         
         let reply = CreateReply::default()
             .content(format!(":wrench: Updating myself... {}", random_emote(Mood::Positive)))
             .ephemeral(true);
-        
         ctx.send(reply).await?;
-        
-        println!("Self-update requested by {}", ctx.author().name);
         
         let mut command = Command::new("./update.sh");
 

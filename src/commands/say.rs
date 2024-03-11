@@ -4,9 +4,9 @@ use crate::Error;
 #[poise::command(slash_command, prefix_command)]
 pub async fn say(
     ctx: Context<'_>,
-    #[description = "Message"] msg: String,
+    #[description = "Message"] message: String,
 ) -> Result<(), Error> {
     
-    ctx.say(msg).await?;
+    ctx.say(message).await?;
     Ok(())
 }

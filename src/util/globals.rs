@@ -1,9 +1,9 @@
 use rand::{thread_rng, Rng};
 use serenity::all::UserId;
 
-static POSITIVE_EMOTES: [&str; 6] = [":)", ";)", ":D", ":3", ":>", ":P"];
-static NEGATIVE_EMOTES: [&str; 4] = [":(", ";(", ":<", "D:"];
-static NEUTRAL_EMOTES: [&str; 1] = ["^^"];
+static POSITIVE_EMOTES: [&str; 7] = [":)", ";)", ":D", ":3", ":>", ":P", "(^-^)"];
+static NEGATIVE_EMOTES: [&str; 6] = [":(", ";(", ":<", "D:", "T-T", "('^')"];
+static NEUTRAL_EMOTES: [&str; 2] = ["(>-<)", "('-')"];
 pub enum Mood {
     Positive,
     Neutral,
@@ -11,7 +11,7 @@ pub enum Mood {
 }
 
 static PRIVILEGED_USERS: [u64; 2] = [309307881205923840, 197424794063470592];
-//                                   ^Annika             ^Kumo
+//                                   ^Annika             ^Daniel
 pub fn is_privileged_user(user_id: UserId) -> bool {
     PRIVILEGED_USERS.contains(&u64::from(user_id))
 }

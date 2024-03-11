@@ -4,14 +4,14 @@ use poise::{CreateReply, serenity_prelude as serenity};
 use serenity::all::{ChannelId, ChannelType, GuildChannel};
 use crate::util::globals::{Mood, random_emote};
 
-/// Moves all user's from one voice channel to another
+/// Moves all user's from your current voice channel to another
 #[poise::command(slash_command, prefix_command)]
 pub async fn move_here(
     ctx: Context<'_>,
-    #[description = "Select the target voice-channel"] channel: Option<GuildChannel>,
+    #[description = "Select the target voice-channel"] voice_channel: Option<GuildChannel>,
 ) -> Result<(), Error> {
 
-    let destination_channel = channel.unwrap();
+    let destination_channel = voice_channel.unwrap();
     let author = ctx.author();
     let guild = ctx.guild().unwrap().clone();
 
