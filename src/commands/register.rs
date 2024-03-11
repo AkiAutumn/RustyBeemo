@@ -1,3 +1,4 @@
+use poise::CreateReply;
 use crate::{Context, Error};
 use crate::util::globals::{is_privileged_user, Mood, random_emote};
 
@@ -8,8 +9,11 @@ pub async fn register(ctx: Context<'_>) -> Result<(), Error> {
     if is_privileged_user(ctx.author().id) {
         poise::builtins::register_application_commands_buttons(ctx).await?;
     } else {
-        let response = format!("You're not allowed to do that! {}", random_emote(Mood::Negative));
-        ctx.reply(response).await?;
+
+        let reply = CreateReply::default()
+            .content(format!("You're not allowed to do that! {}", random_emote(Mood::Negative)))
+            .ephemeral(true);
+        ctx.send(reply).await?;
     }
     
     Ok(())
