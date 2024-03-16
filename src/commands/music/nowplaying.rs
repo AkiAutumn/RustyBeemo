@@ -9,7 +9,7 @@ use crate::util::utils::to_time;
 pub async fn now_playing(
     ctx: crate::Context<'_>,
 ) -> Result<(), Error> {
-
+    /*
     let guild = &ctx.guild().unwrap();
     let guild_id = guild.id;
 
@@ -33,7 +33,7 @@ pub async fn now_playing(
                 return Ok(());
             }
         };
-
+        
         let metadata = current.metadata();
         let track_info = current.get_info().await.unwrap();
 
@@ -67,11 +67,13 @@ pub async fn now_playing(
                 .timestamp(Timestamp::now())
             )
         }).await?;
+         
     } else {
         let reply = CreateReply::default()
             .content(format!("You need to be in a voice channel! {}", random_emote(Mood::Negative)))
             .ephemeral(true);
         ctx.send(reply).await?;
     }
+     */
     Ok(())
 }

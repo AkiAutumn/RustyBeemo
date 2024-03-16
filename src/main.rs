@@ -13,7 +13,8 @@ mod commands {
     pub mod ping;
     pub mod warn;
     pub mod self_update;
-    //pub mod music;
+    pub mod shutdown;
+    pub mod music;
 }
 
 
@@ -27,7 +28,7 @@ type Context<'a> = poise::Context<'a, Data, Error>;
 
 #[tokio::main]
 async fn main() {
-    
+
     dotenv().unwrap_or_else(|e| panic!("Failed to load .env file: {}", e));
     let token = std::env::var("DISCORD_TOKEN").expect("missing DISCORD_TOKEN");
     let intents = serenity::GatewayIntents::all();
@@ -42,7 +43,17 @@ async fn main() {
                 commands::steal_profile_pic::steal_profile_pic(),
                 commands::ping::ping(),
                 commands::warn::warn(),
-                commands::self_update::self_update()
+                commands::self_update::self_update(),
+                commands::shutdown::shutdown(),
+                commands::music::clear::clear(),
+                commands::music::play::play(),
+                commands::music::leave::leave(),
+                commands::music::pause::pause(),
+                commands::music::play::play(),
+                commands::music::resume::resume(),
+                commands::music::shuffle::shuffle(),
+                commands::music::skip::skip(),
+                commands::music::stop::stop(),
             ],
             ..Default::default()
         })

@@ -1,7 +1,4 @@
-use std::ops::Deref;
-use futures_util::AsyncReadExt;
 use poise::CreateReply;
-use reqwest::Client;
 use songbird::input::YoutubeDl;
 struct HttpKey;
 
@@ -20,12 +17,12 @@ pub async fn play(
 
     let guild_id = ctx.guild_id().unwrap();
     
-    let http_client = {
+    let http_client = reqwest::Client::new();/*{
         let data = crate::Context::data();
         data.get::<HttpKey>()
             .cloned()
             .expect("Guaranteed to exist in the typemap.")
-    };
+    };*/
 
     let manager = songbird::get(ctx.as_ref())
         .await

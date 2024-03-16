@@ -2,13 +2,12 @@ use poise::CreateReply;
 use serenity::model::prelude::*;
 use crate::Error;
 use crate::util::globals::{Mood, random_emote};
-use crate::util::utils::to_time;
 
 #[poise::command(slash_command, prefix_command)]
 pub async fn queue(
     ctx: crate::Context<'_>,
 ) -> Result<(), Error> {
-
+    /*
     let guild = &ctx.guild().unwrap();
     let guild_id = guild.id;
 
@@ -34,6 +33,7 @@ pub async fn queue(
         };
 
         let mut desc = String::from("+ - + - + - + - + - + - + - + - + - +\n");
+        
         let mut total_time = 0;
         for (i, song) in queue.current_queue().iter().enumerate() {
             desc.push_str(&format!(
@@ -47,7 +47,7 @@ pub async fn queue(
             ));
             total_time += song.metadata().duration.unwrap().as_secs()
         }
-
+        
         ctx.channel_id()
             .send_message(&ctx, |m| {
                 m.embed(|e| {
@@ -55,13 +55,14 @@ pub async fn queue(
                         .title(":notes: - Queue - :notes:")
                         .fields(vec![
                             ("Queue length", format!("{}", queue.len()), true),
-                            ("Total time", to_time(total_time), true),
+                            //("Total time", to_time(total_time), true),
                         ])
                         .description(desc)
                         .timestamp(Timestamp::now())
                 })
             })
             .await?;
+         
     } else {
         
         let reply = CreateReply::default()
@@ -69,5 +70,6 @@ pub async fn queue(
             .ephemeral(true);
         ctx.send(reply).await?;
     }
+     */
     Ok(())
 }
