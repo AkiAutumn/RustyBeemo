@@ -8,8 +8,7 @@ pub async fn resume(
     ctx: crate::Context<'_>,
 ) -> Result<(), Error> {
 
-    let guild = &ctx.guild().unwrap();
-    let guild_id = guild.id;
+    let guild_id = ctx.guild().unwrap().id;
 
     let manager = songbird::get(ctx.as_ref())
         .await

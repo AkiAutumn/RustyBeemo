@@ -33,7 +33,7 @@ pub async fn queue(
         };
 
         let mut desc = String::from("+ - + - + - + - + - + - + - + - + - +\n");
-        
+
         let mut total_time = 0;
         for (i, song) in queue.current_queue().iter().enumerate() {
             desc.push_str(&format!(
@@ -47,7 +47,7 @@ pub async fn queue(
             ));
             total_time += song.metadata().duration.unwrap().as_secs()
         }
-        
+
         ctx.channel_id()
             .send_message(&ctx, |m| {
                 m.embed(|e| {
@@ -62,7 +62,7 @@ pub async fn queue(
                 })
             })
             .await?;
-         
+
     } else {
         
         let reply = CreateReply::default()
