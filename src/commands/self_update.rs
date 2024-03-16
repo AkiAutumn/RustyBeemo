@@ -21,7 +21,7 @@ pub async fn self_update(
         
     } else {
 
-        println!("Self-update requested by {}", ctx.author().name);
+        println!("[INFO] Self-update requested by {}", ctx.author().name);
         
         let reply = CreateReply::default()
             .content(format!(":wrench: Updating myself... {}", random_emote(Mood::Positive)))
@@ -32,13 +32,13 @@ pub async fn self_update(
 
         if let Some(exit_code) = command.execute().unwrap() {
             if exit_code == 0 {
-                println!("Exiting the process...");
-                process::exit(0x0100);
+                println!("[INFO] Exiting the process...");
+                process::exit(0);
             } else {
-                eprintln!("Update failed!");
+                eprintln!("[ERROR] Update failed!");
             }
         } else {
-            eprintln!("Update Interrupted!");
+            eprintln!("[ERROR] Update Interrupted!");
         }
     }
     

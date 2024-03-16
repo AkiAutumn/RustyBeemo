@@ -1,6 +1,8 @@
 mod util {
     pub mod globals;
+    pub mod utils;
 }
+
 
 mod commands {
     pub mod say;
@@ -11,8 +13,11 @@ mod commands {
     pub mod ping;
     pub mod warn;
     pub mod self_update;
+    //pub mod music;
 }
 
+
+use songbird::SerenityInit;
 use poise::{serenity_prelude as serenity};
 use dotenv::dotenv;
 
@@ -51,6 +56,7 @@ async fn main() {
 
     let client = serenity::ClientBuilder::new(token, intents)
         .framework(framework)
+        .register_songbird()
         .await;
     client.unwrap().start().await.unwrap();
 }
