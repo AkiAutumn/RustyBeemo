@@ -11,8 +11,7 @@ mod commands {
     pub mod register;
     pub mod steal_profile_pic;
     pub mod ping;
-    pub mod warn;
-    pub mod self_update;
+    pub mod warn;pub mod self_update;
     pub mod shutdown;
     pub mod music;
 }

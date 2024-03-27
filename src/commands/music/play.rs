@@ -1,10 +1,10 @@
 use poise::CreateReply;
 use songbird::input::YoutubeDl;
-struct HttpKey;
 
 use crate::{Data, Error};
 use crate::util::globals::{Mood, random_emote};
 
+struct HttpKey;
 #[poise::command(slash_command, prefix_command)]
 pub async fn play(
     ctx: crate::Context<'_>,
@@ -16,13 +16,8 @@ pub async fn play(
     let do_search = !url.starts_with("http");
 
     let guild_id = ctx.guild_id().unwrap();
-    
-    let http_client = reqwest::Client::new();/*{
-        let data = crate::Context::data();
-        data.get::<HttpKey>()
-            .cloned()
-            .expect("Guaranteed to exist in the typemap.")
-    };*/
+
+    let http_client = reqwest::Client::new();
 
     let manager = songbird::get(ctx.as_ref())
         .await
